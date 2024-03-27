@@ -11,12 +11,17 @@ const seedMusician = require("./seedData");
 
 
 describe('./musicians endpoint', () => {
-    // Write your tests here
+    beforeAll(async () => {
+        await db.sync({ force: true });
+        await Musician.bulkCreate(seedMusician);
+    });
+    it('should return all musicians', async () => {
+        const response = await request(app).get('/musicians');
+    });    
+
+    it('should return a single musician', async () => {
+        const response = await request(app).get('/musicians/1');
+    });
     
-    
-
-
-
-
-    
+   
 })
