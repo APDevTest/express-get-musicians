@@ -18,7 +18,7 @@ musicianRouter.post("/", async (req, res, next) => {
         if(!musician) {
             throw new Error("Invalid musician data");
         }
-        res.json(musician);
+        res.json({musician: musician.name});
     } catch(err) {
         next(err);        
     }
